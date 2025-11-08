@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { quotes } from "../quotes/quotes";
-
 import { Button, Stack, ThemeProvider, Typography } from "@mui/material";
-import theme from "./ThemeColors";
+//import theme from "./ThemeColors";
 import { useState } from "react";
+
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -18,17 +18,26 @@ const MainPage = () => {
   };
 
   const playGameClick = () => {
+    setIsCorrect(false);
     const randomIndex = Math.floor(Math.random() * quotes.length);
-    setPlayGame(true);
     setChosenQuote(quotes[randomIndex].quote);
     setChosenSpeaker(quotes[randomIndex].speaker);
-    console.log(`should be playing game`);
+    setPlayGame(true);
   };
+
+  console.log(`speaker: ${chosenSpeaker}`);
 
   const handleGuess = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    setIsCorrect(true);
-    console.log(`guess is: ${guess}`);
+    if (guess.toLowerCase() === chosenSpeaker.toLowerCase()) {
+      setIsCorrect(true);
+    } else {
+      setIsCorrect(false);
+    }
+  }
+
+  const handleListClick = () => {
+   navigate("/list");
   }
 
   return (
@@ -47,27 +56,29 @@ const MainPage = () => {
               />
               <button type="submit">Enter</button>
             </form>
+            {isCorrect && (
+              <div>
+                <h1>✅</h1>
+                <button onClick={playGameClick}>New Quote</button>
+              </div>
+            )}
 
           </>
         )}
       </div>
-      <>
-        {isCorrect ? (
-          <h1>CORRECT</h1>
-        ) : <h1>FALSE</h1>}
 
-      </>
+      <Stack direction="row" spacing={2}>
+        <Button onClick={playGameClick}>
+          Play Game
+        </Button>
+        <Button onClick={handleClick}>
+          Back
+        </Button>
+        <Button onClick={handleListClick}>
+          Show List
+        </Button>
+      </Stack>
 
-      <ThemeProvider theme={theme}>
-        <Stack direction="row" spacing={2}>
-          <Button color="primary" onClick={playGameClick}>
-            Play Game
-          </Button>
-          <Button color="secondary" onClick={handleClick}>
-            Back
-          </Button>
-        </Stack>
-      </ThemeProvider>
     </>
   );
 };

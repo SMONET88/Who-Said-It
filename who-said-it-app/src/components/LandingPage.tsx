@@ -25,7 +25,7 @@ const LandingPage = () => {
         onClick={handleClick}
       />
 
-      <p>Welcome to the funniest things said by the members of vive</p>
+      <p>Welcome to the most iconic things said by the members of vive</p>
     </Box>
   );
 };
