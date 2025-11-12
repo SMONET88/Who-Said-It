@@ -37,12 +37,12 @@ const MainPage = () => {
   }
 
   const handleListClick = () => {
-   navigate("/list");
+    navigate("/list");
   }
 
   return (
     <>
-      <div>
+      <div className='main-page'>
         {playGame && (
           <>
             <Typography variant="h1" gutterBottom>
@@ -65,19 +65,20 @@ const MainPage = () => {
 
           </>
         )}
-      </div>
 
-      <Stack direction="row" spacing={2}>
-        <Button onClick={playGameClick}>
-          Play Game
-        </Button>
-        <Button onClick={handleClick}>
-          Back
-        </Button>
-        <Button onClick={handleListClick}>
-          Show List
-        </Button>
-      </Stack>
+
+        <Stack direction="row" spacing={2}>
+          <Button onClick={playGameClick}>
+            Play Game
+          </Button>
+          <Button onClick={handleClick}>
+            Back
+          </Button>
+          <Button onClick={handleListClick}>
+            Show List
+          </Button>
+        </Stack>
+      </div>
 
     </>
   );
