@@ -49,7 +49,7 @@ export const quotes: QuoteType[] = [
   {
     quote:
       "There was even one plus sized guy…which is good but he got cut first round",
-    speaker: "Anna",
+    speaker: "Sheedy",
   },
   {
     quote: "Never have I ever talked to a person of the other color",

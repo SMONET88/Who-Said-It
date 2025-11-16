@@ -10,7 +10,15 @@ const LandingPage = () => {
   };
 
   return (
-    <Box>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center", // vertical center
+        alignItems: "center",
+        paddingTop: 50,
+      }}
+    >
       <h1>Who Said It?</h1>
 
       <motion.button
@@ -33,7 +41,7 @@ const LandingPage = () => {
 const ball = {
   width: 100,
   height: 100,
-  backgroundColor: "#dd00ee",
+  backgroundColor: "#9fa0ff",
   borderRadius: "50%",
 };
 

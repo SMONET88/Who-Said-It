@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { quotes } from "../quotes/quotes";
-import { Button, Stack, ThemeProvider, Typography } from "@mui/material";
+import { Button, Stack, TextField, ThemeProvider, Typography } from "@mui/material";
 //import theme from "./ThemeColors";
 import { useState } from "react";
 
@@ -48,18 +48,20 @@ const MainPage = () => {
             <Typography variant="h1" gutterBottom>
               {chosenQuote}
             </Typography>
-            <form onSubmit={handleGuess}>
-              <input
-                type="text"
+            <form onSubmit={handleGuess} style={{ display: 'flex', gap: '12px' }}>
+              <TextField
+                variant="outlined"
                 value={guess}
                 onChange={(e) => setGuess(e.target.value)}
+                sx={{ width: 250, input: { color: 'white' }, }} 
               />
-              <button type="submit">Enter</button>
+              <Button type="submit" variant="contained">Enter</Button>
             </form>
+
             {isCorrect && (
               <div>
                 <h1>✅</h1>
-                <button onClick={playGameClick}>New Quote</button>
+                <Button onClick={playGameClick}>New Quote</Button>
               </div>
             )}
 
@@ -67,7 +69,7 @@ const MainPage = () => {
         )}
 
 
-        <Stack direction="row" spacing={2}>
+        <Stack direction="row" spacing={4}>
           <Button onClick={playGameClick}>
             Play Game
           </Button>
