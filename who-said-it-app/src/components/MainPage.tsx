@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { quotes } from "../quotes/quotes";
-import { Button, Stack, TextField, ThemeProvider, Typography } from "@mui/material";
-//import theme from "./ThemeColors";
+import { Button, Stack, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 
 

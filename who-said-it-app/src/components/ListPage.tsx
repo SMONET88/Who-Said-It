@@ -9,13 +9,12 @@ import {
   Typography,
 } from "@mui/material";
 import Button from "@mui/material/Button";
-import { cloneElement, useState } from "react";
+import {useState } from "react";
 
 const ListPage = () => {
   const uniqueSpeaker: string[] = [];
   const [showQuotes, setShowQuotes] = useState(false);
   const [quoteList, setQuoteList] = useState<string[]>([]);
-  const [dense, setDense] = useState(false);
   const [speakerChosen, setSpeaker] = useState('');
 
   quotes.forEach((s) => {
@@ -38,19 +37,7 @@ const ListPage = () => {
     setShowQuotes(true);
   };
 
-  function generate(element: React.ReactElement<unknown>) {
-    const numArr: number[] = [];
-    for (let i = 0; i < quoteList.length; i++) {
-      numArr.push(i);
-    }
-
-    return numArr.map((value) =>
-      cloneElement(element, {
-        key: value,
-      }),
-    );
-  }
-
+ 
   return (
     <>
       <Box
@@ -98,7 +85,7 @@ const ListPage = () => {
               {speakerChosen}'s Quotes
             </Typography>
     
-            <List dense={dense}>
+            <List>
               {quoteList.map((quote, index) => (
                 <ListItem key={index}>
                   <ListItemText primary={quote} />
