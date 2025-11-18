@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { quotes } from "../quotes/quotes";
-import { Button, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 
 
@@ -41,7 +41,13 @@ const MainPage = () => {
 
   return (
     <>
-      <div className='main-page'>
+      <Box sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center", // vertical center
+        alignItems: "center",
+        paddingTop: 50,
+      }}>
         {playGame && (
           <>
             <Typography variant="h1" gutterBottom>
@@ -79,7 +85,7 @@ const MainPage = () => {
             Show List
           </Button>
         </Stack>
-      </div>
+      </Box>
 
     </>
   );

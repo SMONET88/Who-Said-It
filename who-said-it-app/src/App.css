@@ -1,19 +1,12 @@
 #root {
-  text-align: center;
-   height: 100vh; 
+    text-align: center;
+    height: 100vh;
 }
 
-
-.name-list {
-  list-style: none;         /* Removes default bullets */
-  padding-left: 0;          /* Removes default left padding */
-  margin: 0;                /* Removes default margin */
-  text-align: left;
-}
-
-.name-list li {
-  padding: 8px 0;           /* Adds vertical spacing between names */
-  text-align: left;         /* Aligns text to the left */
-  margin-left: 20px;        /* Pushes each name away from the edge */
-  font-size: 16px;          /* Optional: makes names easier to read */
+.sign-in-button button{
+    display: "flex";
+    flex-direction: "column";
+    align-items: "center";
+    justify-content: "center";
+    min-height: "100vh";
 }

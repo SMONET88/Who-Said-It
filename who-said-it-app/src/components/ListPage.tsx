@@ -9,13 +9,16 @@ import {
   Typography,
 } from "@mui/material";
 import Button from "@mui/material/Button";
-import {useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ListPage = () => {
   const uniqueSpeaker: string[] = [];
   const [showQuotes, setShowQuotes] = useState(false);
   const [quoteList, setQuoteList] = useState<string[]>([]);
-  const [speakerChosen, setSpeaker] = useState('');
+  const [speakerChosen, setSpeaker] = useState("");
+
+  const navigate = useNavigate();
 
   quotes.forEach((s) => {
     if (!uniqueSpeaker.includes(s.speaker) && !s.speaker.includes("and")) {
@@ -37,14 +40,17 @@ const ListPage = () => {
     setShowQuotes(true);
   };
 
- 
+  const handleClick = () => {
+    navigate("/main");
+  };
+
   return (
     <>
       <Box
         sx={{
           display: "flex",
-          flexDirection: "row",   // two columns
-          height: "100vh",        // full viewport height
+          flexDirection: "row", // two columns
+          height: "100vh", // full viewport height
         }}
       >
         {/* Left column: speakers */}
@@ -52,10 +58,10 @@ const ListPage = () => {
           spacing={2}
           direction="column"
           sx={{
-            justifyContent: "center",   // vertical center
-            alignItems: "flex-start",   // left align
+            justifyContent: "center", // vertical center
+            alignItems: "flex-start", // left align
             pl: 2,
-            flex: 1,                    // take up some width
+            flex: 1, // take up some width
           }}
         >
           {uniqueSpeaker.map((speaker, index) => (
@@ -68,8 +74,10 @@ const ListPage = () => {
               {speaker}
             </Button>
           ))}
+
+          <Button onClick={handleClick}>Back</Button>
         </Stack>
-    
+
         {/* Right column: quotes */}
         {showQuotes && (
           <Box
@@ -77,14 +85,14 @@ const ListPage = () => {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center", // vertical center
-              alignItems: "center",     // horizontal center
-              flex: 6,                  // take up more width
+              alignItems: "center", // horizontal center
+              flex: 6, // take up more width
             }}
           >
             <Typography sx={{ mb: 2 }} variant="h6" component="div">
               {speakerChosen}'s Quotes
             </Typography>
-    
+
             <List>
               {quoteList.map((quote, index) => (
                 <ListItem key={index}>
@@ -96,8 +104,7 @@ const ListPage = () => {
         )}
       </Box>
     </>
-
-  )
-}
+  );
+};
 
 export default ListPage;
