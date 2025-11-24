@@ -3,6 +3,7 @@ import "./App.css";
 import LandingPage from "./components/LandingPage";
 import MainPage from "./components/MainPage";
 import ListPage from "./components/ListPage";
+import AddPage from "./components/AddPage";
 import {
   SignedIn,
   SignedOut,
@@ -27,6 +28,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/main" element={<MainPage />} />
             <Route path="/list" element={<ListPage />} />
+            <Route path="/add" element={<AddPage />} />
           </Routes>
         </BrowserRouter>
       </SignedIn>

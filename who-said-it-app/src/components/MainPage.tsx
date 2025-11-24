@@ -38,6 +38,10 @@ const MainPage = () => {
   const handleListClick = () => {
     navigate("/list");
   }
+  
+  const handleAddQuoteClick = () => {
+    navigate("/add");
+  }
 
   return (
     <>
@@ -83,6 +87,9 @@ const MainPage = () => {
           </Button>
           <Button onClick={handleListClick}>
             Show List
+          </Button>
+          <Button onClick={handleAddQuoteClick}>
+            Add Quote
           </Button>
         </Stack>
       </Box>

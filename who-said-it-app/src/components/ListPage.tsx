@@ -1,4 +1,3 @@
-import { quotes } from "../quotes/quotes";
 import "../App.css";
 import {
   Box,
@@ -12,37 +11,33 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+type ResultsType = {
+  quote: string
+}
+
 const ListPage = () => {
-  const uniqueSpeaker: string[] = [];
   const [showQuotes, setShowQuotes] = useState(false);
-  const [quoteList, setQuoteList] = useState<string[]>([]);
+  const [quoteList, setQuoteList] = useState<ResultsType[]>([]);
   const [speakerChosen, setSpeaker] = useState("");
 
   const navigate = useNavigate();
+  
+  const Names = ['Sheedy', 'Ang', 'Bridgette', 'Lauren', 'Phia', 'Sam', 'Charlie', 'Ava', 'Unknown']
 
-  quotes.forEach((s) => {
-    if (!uniqueSpeaker.includes(s.speaker) && !s.speaker.includes("and")) {
-      uniqueSpeaker.push(s.speaker);
-    }
-  });
-
-  const onClick = (speaker: string) => {
+  const onClick = async (speaker: string) => {
+    const results: ResultsType[] = await fetch(`http://localhost:3000/quotes/${speaker}`).then(resp => resp.json());
     setSpeaker(speaker);
-    const items: string[] = [];
-    quotes.forEach((quote) => {
-      if (quote.speaker === speaker) {
-        items.push(quote.quote);
-      }
-    });
-
-    setQuoteList(items);
-    console.log(items);
+    setQuoteList(results);
     setShowQuotes(true);
   };
+  
+
 
   const handleClick = () => {
     navigate("/main");
   };
+  
+  
 
   return (
     <>
@@ -64,7 +59,7 @@ const ListPage = () => {
             flex: 1, // take up some width
           }}
         >
-          {uniqueSpeaker.map((speaker, index) => (
+          {Names.map((speaker, index) => (
             <Button
               variant="contained"
               color="primary"
@@ -96,7 +91,7 @@ const ListPage = () => {
             <List>
               {quoteList.map((quote, index) => (
                 <ListItem key={index}>
-                  <ListItemText primary={quote} />
+                  <ListItemText primary={quote.quote} />
                 </ListItem>
               ))}
             </List>

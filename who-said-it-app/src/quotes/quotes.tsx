@@ -228,4 +228,13 @@ export const quotes: QuoteType[] = [
       "Just because you’re a grandma doesn’t mean you can’t be a good friend",
     speaker: "Sam",
   },
+  {
+    quote: "I don’t get mad anymore, I just laugh",
+    speaker: "Phia",
+  },
+  {
+    quote: "I'll answer more later, I'm so hungover",
+    speaker: "Phia",
+  },
+  
 ];
