@@ -8,9 +8,9 @@ const AddPage = () => {
     navigate("/main");
   };
   
-  const onSubmitClick = async () => {
+  // const onSubmitClick = async () => {
    
-  };
+  // };
   
   return (
     <>
