@@ -14,15 +14,6 @@ const client = new MongoClient(uri, {
   },
 });
 
-//   addQuoteMongo({
-//     quote: "I don’t get mad anymore, I just laugh",
-//     speaker: "Phia",
-//   });
-
-// } catch (error) {
-//   console.error(error);
-// });
-
 router.get("/:speaker", async (req, res) => {
   try {
     await client.connect();

@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import quotesRouter from "./backend/router.js";
+import quotesRouter from "./router.js";
 
 const app = express();
 

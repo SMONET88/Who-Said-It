@@ -1,19 +1,18 @@
 import "../App.css";
 import {
-  Box,
-  List,
+  Box, List,
   ListItem,
   ListItemText,
   Stack,
-  Typography,
+  Typography
 } from "@mui/material";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 type ResultsType = {
-  quote: string
-}
+  quote: string;
+};
 
 const ListPage = () => {
   const [showQuotes, setShowQuotes] = useState(false);
@@ -21,23 +20,31 @@ const ListPage = () => {
   const [speakerChosen, setSpeaker] = useState("");
 
   const navigate = useNavigate();
-  
-  const Names = ['Sheedy', 'Ang', 'Bridgette', 'Lauren', 'Phia', 'Sam', 'Charlie', 'Ava', 'Unknown']
+
+  const Names = [
+    "Sheedy",
+    "Ang",
+    "Bridgette",
+    "Lauren",
+    "Phia",
+    "Sam",
+    "Charlie",
+    "Ava",
+    "Unknown",
+  ];
 
   const onClick = async (speaker: string) => {
-    const results: ResultsType[] = await fetch(`http://localhost:3000/quotes/${speaker}`).then(resp => resp.json());
+    const results: ResultsType[] = await fetch(
+      `http://localhost:3000/quotes/${speaker}`,
+    ).then((resp) => resp.json());
     setSpeaker(speaker);
     setQuoteList(results);
     setShowQuotes(true);
   };
-  
-
 
   const handleClick = () => {
     navigate("/main");
   };
-  
-  
 
   return (
     <>
@@ -53,10 +60,10 @@ const ListPage = () => {
           spacing={2}
           direction="column"
           sx={{
-            justifyContent: "center", // vertical center
-            alignItems: "flex-start", // left align
+            justifyContent: "center",
+            alignItems: "flex-start",
             pl: 2,
-            flex: 1, // take up some width
+            flex: 1,
           }}
         >
           {Names.map((speaker, index) => (
@@ -79,19 +86,45 @@ const ListPage = () => {
             sx={{
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center", // vertical center
-              alignItems: "center", // horizontal center
-              flex: 6, // take up more width
+              alignItems: "center",
+              flex: 6,
+              overflowY: "auto",
+              minHeight: 0,
             }}
           >
-            <Typography sx={{ mb: 2 }} variant="h6" component="div">
+            <Typography
+              sx={{
+                position: "sticky",
+                top: 0,
+                padding: 2,
+                zIndex: 1,
+                width: "100%",
+                textAlign: "center",
+              }}
+              variant="h6"
+              component="div"
+            >
               {speakerChosen}'s Quotes
             </Typography>
-
-            <List>
+            <List
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                width: "100%",
+              }}
+            >
               {quoteList.map((quote, index) => (
-                <ListItem key={index}>
-                  <ListItemText primary={quote.quote} />
+                <ListItem
+                  sx={{
+                    justifyContent: "center",
+                  }}
+                  key={index}
+                >
+                  <ListItemText
+                    sx={{ textAlign: "center" }}
+                    primary={quote.quote}
+                  />
                 </ListItem>
               ))}
             </List>

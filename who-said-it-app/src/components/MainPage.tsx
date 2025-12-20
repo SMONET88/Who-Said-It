@@ -82,14 +82,14 @@ const MainPage = () => {
           <Button onClick={playGameClick}>
             Play Game
           </Button>
-          <Button onClick={handleClick}>
-            Back
-          </Button>
           <Button onClick={handleListClick}>
             Show List
           </Button>
           <Button onClick={handleAddQuoteClick}>
             Add Quote
+          </Button>
+          <Button onClick={handleClick}>
+            Back
           </Button>
         </Stack>
       </Box>
